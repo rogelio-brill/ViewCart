@@ -19,12 +19,10 @@ public class ViewCartApi {
         Response resp = viewCartHelper.getRenderedComponents();
 
         int status = resp.getStatusCode();
-        String jsonString = resp.getBody().prettyPrint();
-
-        System.out.println(jsonString);
+        String body = resp.getBody().prettyPrint();
 
         Assert.assertEquals(status, 200);
-        //Assert.assertTrue(jsonString.contains("renderedComponents"));
+        Assert.assertTrue(body.equals("{\n" + "    \n" + "}"));
     }
 
 }

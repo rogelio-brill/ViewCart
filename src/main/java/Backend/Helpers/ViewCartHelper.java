@@ -3,7 +3,6 @@ package Backend.Helpers;
 import Backend.Constants.Endpoints;
 import Backend.Utils.ConfigManager;
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 public class ViewCartHelper {
@@ -29,7 +28,6 @@ public class ViewCartHelper {
             .when()
                 .get(Endpoints.GET_RENDERED_COMPONENTS)
             .then()
-                .log().body()
                 .extract().response();
 
         return response;

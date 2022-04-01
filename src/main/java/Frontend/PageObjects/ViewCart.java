@@ -15,16 +15,17 @@ public class ViewCart {
     }
 
     // Locator for Item Name
-    By itemName = By.xpath("//div[@class='ux-textspans ux-textspans--BOLD']");
+    By itemName = By.cssSelector(".ux-textspans.ux-textspans--BOLD");
 
     // Locator for Item Description
     By itemDescription = By.id("viTabs_0_is");
 
     // Locator for Item Shipping
+    By itemShippingBtn = By.id("viTabs_1");
     By itemShipping = By.id("vi-ship-maincntr");
 
     // Locator for Item Condition
-    By itemCondition = By.xpath("//div[@class='vim d-item-condition']");
+    By itemCondition = By.cssSelector(".vim.d-item-condition");
 
     // Locator for Item Price
     By itemPrice = By.className("lbl-value-set");
@@ -39,17 +40,16 @@ public class ViewCart {
     By itemBuyBoxPrice = By.className("vi-ppc-buybox-msg");
 
     // Locator for main item Picture
-    By itemMainPicture = By.xpath("//div[@class='img img500']");
+    By itemMainPicture = By.id("icImg");
 
     // Locator for other item Picture
-    By itemOtherPictures = By.id("vertical-align-items-viewport");
+    By itemOtherPictures = By.className("v-pic-item");
 
     // Locator for item quantity text box
     By itemQuantity = By.id("qtyTextBox");
 
     // Locator for item seller information
-    By itemSellerInfo = By.className("vim x-about-this-seller");
-
+    By itemSellerInfo = By.cssSelector(".vim.x-about-this-seller");
 
     // Locator for buy now button
     By buyNowButton = By.id("binBtn_btn");
@@ -57,22 +57,20 @@ public class ViewCart {
     // Locator for Continue as guest button
     By guestButton = By.id("sbin-gxo-btn");
 
-
     // Locator for Add to cart button
     By addToCartButton = By.id("atcRedesignId_btn");
 
     // Locator for view cart button
-    By viewCartButton = By.xpath("//a[@class='btn btn-scnd vi-VR-btnWdth-XL']");
-
+    By viewCartButton = By.cssSelector(".btn.btn-scnd.vi-VR-btnWdth-XL']");
 
     // Locator for add to wishlist button
     By wishlistButton = By.id("vi-atl-lnk-99");
 
     // Locator for buy with confidence section
-    By confidenceSection = By.xpath("//div[@class='vim x-shop-with-confidence']");
+    By confidenceSection = By.cssSelector(".vim.x-shop-with-confidence']");
 
     // Locator for item Sold section
-    By itemSoldSection = By.xpath("//div[@class='w2b w2bsls']");
+    By itemSoldSection = By.cssSelector(".w2b.w2bsls");
 
     // Locator for item Sold Subsection
     By itemSoldSubSection = By.className("w2b-sgl");
@@ -98,6 +96,7 @@ public class ViewCart {
     }
 
     public WebElement itemShipping() {
+        driver.findElement(itemShippingBtn).click();
         return driver.findElement(itemShipping);
     }
 

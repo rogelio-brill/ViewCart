@@ -5,6 +5,7 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 
 
@@ -43,7 +44,7 @@ public class BaseDriver {
 
     }
 
-    @AfterSuite
+    @AfterMethod
     public void tearDown() {
         if (webdrivers.get() != null) {
             webdrivers.get().close();
