@@ -3,13 +3,13 @@
 
 <suite name="Suite">
 
-    <test thread-count="5" name="TestUS">
+    <test thread-count="5" name="Test_ViewItem_UI">
         <classes>
             <class name="Frontend.ViewCartUi" />
         </classes>
     </test>
 
-    <test thread-count="5" name="Test">
+    <test thread-count="5" name="Test_ViewItem_API">
         <classes>
             <class name="Backend.ViewCartApi" />
         </classes>

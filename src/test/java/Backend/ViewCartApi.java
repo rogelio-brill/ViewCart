@@ -25,4 +25,23 @@ public class ViewCartApi {
         Assert.assertTrue(body.equals("{\n" + "    \n" + "}"));
     }
 
+    @Test
+    public void test_addToCart() {
+        Response resp = viewCartHelper.getAddToCart();
+
+        int status = resp.getStatusCode();
+        String body = resp.getBody().prettyPrint();
+
+        Assert.assertEquals(status, 200);
+        Assert.assertTrue(body.contains("true"));
+    }
+
+    @Test
+    public void test_ads() { // Figure our cache key
+        Response resp = viewCartHelper.getAds();
+
+        int status = resp.getStatusCode();
+
+        Assert.assertEquals(status, 204);
+    }
 }

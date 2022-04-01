@@ -1,15 +1,11 @@
 
-W
-'src/main/java/Helper/ContentReader.java,1\d\1ded42e44f1b4780effefc18dcf713ff8820f9f5
-S
-#src/main/java/PageObjects/Home.java,6\9\6928f42b8bdcc1c8965a8ec2a3af6c79b63475f5
-W
-'src/main/java/PageObjects/ViewCart.java,d\3\d3b208803afc769e80971ee045291aa1c2f2322c
-W
-'src/main/java/PageObjects/Checkout.java,9\9\99c1d78cb0503ea8c8391dacbc14f00dc360a17e
-X
-(src/main/java/PageObjects/AddToCart.java,f\3\f337bb873b0f0c5b73ce4068bf4acaf3320c3cc9
-T
-$src/main/java/PageObjects/Utils.java,0\5\0513232f6f17bd1e3fb0528039538dbaf0cb1540
-T
-$src/main/java/Helper/BaseDriver.java,6\9\6951c05347c420fb905c9b5a87661696b762338e
+^
+.src/main/java/Backend/Utils/ConfigManager.java,a\d\adf8955d3e596f8b89c3c8592ec250f37f3145e1
+`
+0src/main/java/Frontend/Helper/ContentReader.java,9\6\96e3dbcff11e3f982df43952a7b48c395c7da019
+]
+-src/main/java/Frontend/Helper/BaseDriver.java,6\b\6b5bbc50d70b72d2d11c68b2092ab7b42ba3c9b7
+\
+,src/main/java/Frontend/PageObjects/Home.java,e\9\e9de9de7656f0d25bb76835896af2912179668e6
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec

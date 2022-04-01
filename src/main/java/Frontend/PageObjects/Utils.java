@@ -2,6 +2,7 @@ package Frontend.PageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class Utils {
 
@@ -20,6 +21,12 @@ public class Utils {
     // Locator for Ebay search button
     By searchButton = By.id("gh-btn");
 
+    // Locator for redirect sign in button
+    By enterId = By.id("userid");
+
+    // Locator for search item results
+    By searchResults = By.className("srp-controls__count-heading");
+
     // Universal Functionalities
     public String getTitle() {
         return driver.getTitle();
@@ -35,6 +42,14 @@ public class Utils {
 
     public void clickSearch() {
         driver.findElement(searchButton).click();
+    }
+
+    public WebElement searchResultsSection() {
+        return driver.findElement(searchResults);
+    }
+
+    public WebElement verifySignInRedirect() {
+            return driver.findElement(enterId);
     }
 
 }

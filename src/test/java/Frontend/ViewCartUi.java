@@ -13,19 +13,20 @@ import java.util.List;
 public class ViewCartUi extends BaseDriver {
 
     public WebDriver driver;
+    private Home home;
+    private ViewCart viewCart;
 
     @BeforeMethod
     @Parameters({"site"})
     public void init(@Optional String site) throws IOException {
         driver = BaseDriver.getDriver(site);
+        home = new Home(driver);
+        viewCart = new ViewCart(driver);
         driver.manage().window().maximize();
     }
 
     @Test
     public void test_ViewCartPage() {
-        Home home = new Home(driver);
-        ViewCart viewCart = new ViewCart(driver);
-
         home.clickItemFromList();
         boolean itemNameDisplayed = viewCart.itemName().isDisplayed();
 
@@ -34,9 +35,6 @@ public class ViewCartUi extends BaseDriver {
 
     @Test
     public void test_VerifyItemDetails() {
-        Home home = new Home(driver);
-        ViewCart viewCart = new ViewCart(driver);
-
         home.clickItemFromList();
         boolean itemName = viewCart.itemName().isDisplayed();
         boolean itemCondition = viewCart.itemCondition().isDisplayed();
@@ -53,9 +51,6 @@ public class ViewCartUi extends BaseDriver {
 
     @Test
     public void test_VerifyItemPictures() {
-        Home home = new Home(driver);
-        ViewCart viewCart = new ViewCart(driver);
-
         home.clickItemFromList();
         boolean mainPic = viewCart.mainPicture().isDisplayed();
         List<WebElement> otherPics = viewCart.otherPictures();
@@ -66,9 +61,6 @@ public class ViewCartUi extends BaseDriver {
 
     @Test
     public void test_VerifySellerInfo() {
-        Home home = new Home(driver);
-        ViewCart viewCart = new ViewCart(driver);
-
         home.clickItemFromList();
         boolean sellerInfo = viewCart.sellerInfo().isDisplayed();
 
@@ -77,13 +69,113 @@ public class ViewCartUi extends BaseDriver {
 
     @Test
     public void test_ShopWithConfidenceSection() {
-        Home home = new Home(driver);
-        ViewCart viewCart = new ViewCart(driver);
-
         home.clickItemFromList();
         boolean confidenceSection = viewCart.confidenceSection().isDisplayed();
 
         Assert.assertTrue(confidenceSection);
     }
+
+    @Test
+    public void test_EditQuantity() { // implement data provider
+        home.clickItemFromList();
+        viewCart.enterItemQuantity("4");
+        String itemQuantity = viewCart.getQuantity();
+
+        Assert.assertEquals(itemQuantity, "4");
+    }
+
+    @Test
+    public void test_VerifyNumbersSoldAndWatchers() {
+        home.clickItemFromList();
+        List<WebElement> numberSoldAndWatchers = viewCart.soldSection();
+
+        Assert.assertEquals(numberSoldAndWatchers.size(), 3);
+    }
+
+    @Test
+    public void test_BuyItNow() { // Close protection plan frame
+        Checkout checkout = new Checkout(driver);
+
+        home.clickItemFromList();
+        viewCart.clickBuyNow();
+        viewCart.clickGuest();
+        boolean buyNowWorks = checkout.checkoutSingleItem().isDisplayed();
+
+        Assert.assertTrue(buyNowWorks);
+    }
+
+    @Test
+    public void test_AddToCart() { // Cannot find element sometimes because of different id's
+        AddToCart addToCart = new AddToCart(driver);
+
+        home.clickItemFromList();
+        viewCart.clickAddToCart();
+        viewCart.clickViewCart();
+        List<WebElement> cartItems = addToCart.cartItemList();
+
+        Assert.assertTrue(cartItems.size() >= 1);
+    }
+
+    @Test
+    public void test_AddToWatchlist() {
+        Utils utils = new Utils(driver);
+
+        home.clickItemFromList();
+        viewCart.clickWishlist();
+        boolean watchlistWorks = utils.verifySignInRedirect().isDisplayed();
+
+        Assert.assertTrue(watchlistWorks);
+    }
+
+    @Test
+    public void test_VerifySimilarItems() {
+        home.clickItemFromList();
+        List<WebElement> similarItems = viewCart.similarItemsList();
+
+        Assert.assertTrue(similarItems.size() >= 1);
+    }
+
+    @Test
+    public void test_VerifySellerItems() {
+        home.clickItemFromList();
+        List<WebElement> sellerItems = viewCart.sellerItemsList();
+
+        Assert.assertTrue(sellerItems.size() >= 1);
+    }
+
+    @Test
+    public void test_VerifyFooterLinks() {
+        home.clickItemFromList();
+        List<WebElement> footerLinks = viewCart.footerLinksList();
+
+        Assert.assertEquals(footerLinks.size(), 9);
+    }
+
+    @Test
+    public void test_EbayLogo() {
+        Utils utils = new Utils(driver);
+
+        home.clickItemFromList();
+        viewCart.itemName().isDisplayed();
+        utils.clickEbayLogo();
+
+        String expectedTitle = "Electronics, Cars, Fashion, Collectibles & More | eBay";
+        String actualTitle = utils.getTitle();
+
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Test
+    public void test_SearchItem() {
+        Utils utils = new Utils(driver);
+
+        home.clickItemFromList();
+        utils.searchItem("iphone");
+        utils.clickSearch();
+        boolean searchWorks = utils.searchResultsSection().isDisplayed();
+
+        Assert.assertTrue(searchWorks);
+    }
+
 
 }

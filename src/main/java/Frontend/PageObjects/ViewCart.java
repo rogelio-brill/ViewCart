@@ -3,6 +3,8 @@ package Frontend.PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -54,6 +56,12 @@ public class ViewCart {
     // Locator for buy now button
     By buyNowButton = By.id("binBtn_btn");
 
+    // Locator for protection plan pop up
+    By protectionPlan = By.id("vi_oly_ADDON_0");
+
+    // Locator for protection plan decline
+    By protectionPlanDecline = By.xpath("//*[text()='No thanks']");
+
     // Locator for Continue as guest button
     By guestButton = By.id("sbin-gxo-btn");
 
@@ -61,13 +69,13 @@ public class ViewCart {
     By addToCartButton = By.id("atcRedesignId_btn");
 
     // Locator for view cart button
-    By viewCartButton = By.cssSelector(".btn.btn-scnd.vi-VR-btnWdth-XL']");
+    By viewCartButton = By.cssSelector(".btn.btn-scnd.vi-VR-btnWdth-XL");
 
     // Locator for add to wishlist button
     By wishlistButton = By.id("vi-atl-lnk-99");
 
     // Locator for buy with confidence section
-    By confidenceSection = By.cssSelector(".vim.x-shop-with-confidence']");
+    By confidenceSection = By.cssSelector(".vim.x-shop-with-confidence");
 
     // Locator for item Sold section
     By itemSoldSection = By.cssSelector(".w2b.w2bsls");
@@ -79,7 +87,7 @@ public class ViewCart {
     By similarItems = By.id("1011950-c0-19[0[0[0]]]-24-list");
 
     // Locator for sponsored items from seller
-    By sponsoredSellerItems = By.id("1011960-c0-19[0[0[0]]]-24-list");
+    By sellerItems = By.id("1011960-c0-19[0[0[0]]]-24-list");
 
     // Locator for Footer Links
     By footerLinks = By.id("gf-l");
@@ -129,8 +137,11 @@ public class ViewCart {
     }
 
     public void enterItemQuantity(String amount) {
+        driver.findElement(itemQuantity).clear();
         driver.findElement(itemQuantity).sendKeys(amount);
     }
+
+    public String getQuantity() { return driver.findElement(itemQuantity).getAttribute("value"); }
 
     public WebElement sellerInfo() {
         return driver.findElement(itemSellerInfo);
@@ -145,11 +156,13 @@ public class ViewCart {
     }
 
     public void clickAddToCart() {
-        driver.findElement(addToCartButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartButton)).click();
     }
 
     public void clickViewCart() {
-        driver.findElement(viewCartButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(viewCartButton)).click();
     }
 
     public void clickWishlist() {
@@ -160,25 +173,26 @@ public class ViewCart {
         return driver.findElement(confidenceSection);
     }
 
-    public WebElement soldSection() {
-        return driver.findElement(itemSoldSection);
-    }
-
-    public WebElement soldSubSection() {
-        return driver.findElement(itemSoldSubSection);
+    public List<WebElement> soldSection() {
+        return driver.findElements(itemSoldSubSection);
     }
 
     public List<WebElement> similarItemsList() {
-        return driver.findElements(similarItems);
+        WebElement similarItemsSection = driver.findElement(similarItems);
+
+        return similarItemsSection.findElements(By.tagName("li"));
     }
 
-    public List<WebElement> sponsoredSellerList() {
-        return driver.findElements(sponsoredSellerItems);
+    public List<WebElement> sellerItemsList() {
+        WebElement sellerItemsSection = driver.findElement(sellerItems);
+
+        return sellerItemsSection.findElements(By.tagName("li"));
     }
 
     public List<WebElement> footerLinksList() {
-        return driver.findElements(footerLinks);
-    }
+        WebElement footerLinksSection = driver.findElement(footerLinks);
 
+        return footerLinksSection.findElements(By.tagName("li"));
+    }
 
 }
