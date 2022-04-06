@@ -3,6 +3,8 @@ package Frontend.PageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Utils {
 
@@ -27,6 +29,9 @@ public class Utils {
     // Locator for search item results
     By searchResults = By.className("srp-controls__count-heading");
 
+    // Locator for first searched item
+    By searchedItem = By.xpath("//*[@id=\"srp-river-results\"]/ul/li[1]/div/div[2]/a");
+
     // Universal Functionalities
     public String getTitle() {
         return driver.getTitle();
@@ -50,6 +55,10 @@ public class Utils {
 
     public WebElement verifySignInRedirect() {
             return driver.findElement(enterId);
+    }
+
+    public void clickSearchedItem() {
+        driver.findElement(searchedItem).click();
     }
 
 }

@@ -12,7 +12,7 @@ public class Home {
     }
 
     // Item Locator
-    By listItem = By.id("s0-0-32-4-0-0[3]-4-match-media-0-ebay-carousel-list");
+    By listItem = By.id("s0-0-32-4-0-0[5]-4-match-media-0-ebay-carousel-container");
 
     public void clickItemFromList() {
         driver.findElement(listItem).click();

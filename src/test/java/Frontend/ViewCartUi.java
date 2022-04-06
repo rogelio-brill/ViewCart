@@ -15,6 +15,7 @@ public class ViewCartUi extends BaseDriver {
     public WebDriver driver;
     private Home home;
     private ViewCart viewCart;
+    private Utils utils;
 
     @BeforeMethod
     @Parameters({"site"})
@@ -22,12 +23,14 @@ public class ViewCartUi extends BaseDriver {
         driver = BaseDriver.getDriver(site);
         home = new Home(driver);
         viewCart = new ViewCart(driver);
+        utils = new Utils(driver);
         driver.manage().window().maximize();
     }
 
     @Test
     public void test_ViewCartPage() {
         home.clickItemFromList();
+
         boolean itemNameDisplayed = viewCart.itemName().isDisplayed();
 
         Assert.assertTrue(itemNameDisplayed);
@@ -36,13 +39,14 @@ public class ViewCartUi extends BaseDriver {
     @Test
     public void test_VerifyItemDetails() {
         home.clickItemFromList();
-        boolean itemName = viewCart.itemName().isDisplayed();
+
+        //boolean itemName = viewCart.itemName().isDisplayed();
         boolean itemCondition = viewCart.itemCondition().isDisplayed();
         boolean itemPrice = viewCart.itemPrice().isDisplayed();
         boolean itemDescription = viewCart.itemDescription().isDisplayed();
         boolean itemShipping = viewCart.itemShipping().isDisplayed();
 
-        Assert.assertTrue(itemName);
+        //Assert.assertTrue(itemName);
         Assert.assertTrue(itemCondition);
         Assert.assertTrue(itemPrice);
         Assert.assertTrue(itemDescription);
@@ -118,9 +122,8 @@ public class ViewCartUi extends BaseDriver {
 
     @Test
     public void test_AddToWatchlist() {
-        Utils utils = new Utils(driver);
-
         home.clickItemFromList();
+
         viewCart.clickWishlist();
         boolean watchlistWorks = utils.verifySignInRedirect().isDisplayed();
 
@@ -153,8 +156,6 @@ public class ViewCartUi extends BaseDriver {
 
     @Test
     public void test_EbayLogo() {
-        Utils utils = new Utils(driver);
-
         home.clickItemFromList();
         viewCart.itemName().isDisplayed();
         utils.clickEbayLogo();
@@ -167,8 +168,6 @@ public class ViewCartUi extends BaseDriver {
 
     @Test
     public void test_SearchItem() {
-        Utils utils = new Utils(driver);
-
         home.clickItemFromList();
         utils.searchItem("iphone");
         utils.clickSearch();

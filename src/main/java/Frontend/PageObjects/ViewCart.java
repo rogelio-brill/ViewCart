@@ -17,7 +17,9 @@ public class ViewCart {
     }
 
     // Locator for Item Name
+    By sItemName = By.className("//*[@id=\"LeftSummaryPanel\"]/div[1]/div[1]/div/h1/span");
     By itemName = By.cssSelector(".ux-textspans.ux-textspans--BOLD");
+    //By itemName = By.cssSelector(".vim.x-item-title");
 
     // Locator for Item Description
     By itemDescription = By.id("viTabs_0_is");
@@ -98,6 +100,10 @@ public class ViewCart {
     public WebElement itemName() {
         return driver.findElement(itemName);
     }
+    public WebElement searchedItemName() {
+        return driver.findElement(sItemName);
+    }
+
 
     public WebElement itemDescription() {
         return driver.findElement(itemDescription);

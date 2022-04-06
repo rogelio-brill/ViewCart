@@ -9,7 +9,7 @@
         </classes>
     </test>
 
-    <test thread-count="5" name="Test_ViewItem_API">
+    <test parallel="tests" thread-count="5" name="Test_ViewItem_API">
         <classes>
             <class name="Backend.ViewCartApi" />
         </classes>
