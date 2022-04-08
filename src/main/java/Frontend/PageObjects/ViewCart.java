@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
@@ -51,6 +52,8 @@ public class ViewCart {
 
     // Locator for item quantity text box
     By itemQuantity = By.id("qtyTextBox");
+    //Locator for quantity error message
+    By quantityErrMsg = By.id("w1-15-_errMsg");
 
     // Locator for item seller information
     By itemSellerInfo = By.cssSelector(".vim.x-about-this-seller");
@@ -74,7 +77,7 @@ public class ViewCart {
     By viewCartButton = By.cssSelector(".btn.btn-scnd.vi-VR-btnWdth-XL");
 
     // Locator for add to wishlist button
-    By wishlistButton = By.id("vi-atl-lnk-99");
+    By watchlistButton = By.id("vi-atl-lnk-99");
 
     // Locator for buy with confidence section
     By confidenceSection = By.cssSelector(".vim.x-shop-with-confidence");
@@ -93,6 +96,18 @@ public class ViewCart {
 
     // Locator for Footer Links
     By footerLinks = By.id("gf-l");
+
+    // Locator for Select Options
+    By selectOptions = By.id("msku-sel-1");
+
+    //Locator for Select options error message
+    By selectErrMsg = By.id("msku-sel-1-errMsg");
+
+    // Locator for shipping quantity
+    By shippingQuantity = By.id("shQuantity");
+
+    // Locator for shipping quantity error msg
+    By shippingQtyErrMsg = By.id("shQuantity-errTxt");
 
 
     // ---------------------------------------------------------------
@@ -147,6 +162,10 @@ public class ViewCart {
         driver.findElement(itemQuantity).sendKeys(amount);
     }
 
+    public WebElement quantityErrorMsg() {
+        return driver.findElement(quantityErrMsg);
+    }
+
     public String getQuantity() { return driver.findElement(itemQuantity).getAttribute("value"); }
 
     public WebElement sellerInfo() {
@@ -171,8 +190,8 @@ public class ViewCart {
         wait.until(ExpectedConditions.visibilityOfElementLocated(viewCartButton)).click();
     }
 
-    public void clickWishlist() {
-        driver.findElement(wishlistButton).click();
+    public void clickWatchlist() {
+        driver.findElement(watchlistButton).click();
     }
 
     public WebElement confidenceSection() {
@@ -199,6 +218,29 @@ public class ViewCart {
         WebElement footerLinksSection = driver.findElement(footerLinks);
 
         return footerLinksSection.findElements(By.tagName("li"));
+    }
+
+    public void selectDefault() {
+        Select options = new Select(driver.findElement(selectOptions));
+        options.selectByIndex(0);
+    }
+
+    public WebElement selectErrorMsg() {
+        return driver.findElement(selectErrMsg);
+    }
+
+    public void enterShippingQuantity(String amount) {
+        driver.findElement(itemShippingBtn).click();
+        driver.findElement(shippingQuantity).clear();
+        driver.findElement(shippingQuantity).sendKeys(amount);
+    }
+
+    public String getShippingQuantity() {
+        return driver.findElement(shippingQuantity).getAttribute("value");
+    }
+
+    public WebElement shippingQtyErrorMsg() {
+        return driver.findElement(shippingQtyErrMsg);
     }
 
 }

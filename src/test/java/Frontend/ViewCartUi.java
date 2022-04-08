@@ -40,13 +40,13 @@ public class ViewCartUi extends BaseDriver {
     public void test_VerifyItemDetails() {
         home.clickItemFromList();
 
-        //boolean itemName = viewCart.itemName().isDisplayed();
+        boolean itemName = viewCart.itemName().isDisplayed();
         boolean itemCondition = viewCart.itemCondition().isDisplayed();
         boolean itemPrice = viewCart.itemPrice().isDisplayed();
         boolean itemDescription = viewCart.itemDescription().isDisplayed();
         boolean itemShipping = viewCart.itemShipping().isDisplayed();
 
-        //Assert.assertTrue(itemName);
+        Assert.assertTrue(itemName);
         Assert.assertTrue(itemCondition);
         Assert.assertTrue(itemPrice);
         Assert.assertTrue(itemDescription);
@@ -124,7 +124,7 @@ public class ViewCartUi extends BaseDriver {
     public void test_AddToWatchlist() {
         home.clickItemFromList();
 
-        viewCart.clickWishlist();
+        viewCart.clickWatchlist();
         boolean watchlistWorks = utils.verifySignInRedirect().isDisplayed();
 
         Assert.assertTrue(watchlistWorks);
@@ -176,5 +176,63 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(searchWorks);
     }
 
+    @Test
+    public void test_EnterQuantityOverLimit() {
+        home.clickItemFromList();
+        viewCart.enterItemQuantity("2000");
+        boolean quantityErrMsg = viewCart.quantityErrorMsg().isDisplayed();
+        String qtyErrMsg = viewCart.quantityErrorMsg().getText();
+
+        Assert.assertTrue(quantityErrMsg);
+        Assert.assertEquals(qtyErrMsg, "Purchases are limited to 5 per buyer");
+    }
+
+    @Test
+    public void test_AddToCartWithoutSelectOption() {
+        home.clickItemFromList();
+        viewCart.selectDefault();
+        viewCart.clickAddToCart();
+        boolean selectErrMsg = viewCart.selectErrorMsg().isDisplayed();
+
+        Assert.assertTrue(selectErrMsg);
+    }
+
+    @Test
+    public void test_BuyNowWithoutSelectOption() {
+        home.clickItemFromList();
+        viewCart.selectDefault();
+        viewCart.clickBuyNow();
+        boolean selectErrMsg = viewCart.selectErrorMsg().isDisplayed();
+
+        Assert.assertTrue(selectErrMsg);
+    }
+
+    @Test
+    public void test_WatchlistWithoutSelectOption() {
+        home.clickItemFromList();
+        viewCart.selectDefault();
+        viewCart.clickWatchlist();
+        boolean selectErrMsg = viewCart.selectErrorMsg().isDisplayed();
+
+        Assert.assertTrue(selectErrMsg);
+    }
+
+    @Test
+    public void test_EnterShippingQuantity() {
+        home.clickItemFromList();
+        viewCart.enterShippingQuantity("3");
+        String shippingQuantity = viewCart.getShippingQuantity();
+
+        Assert.assertEquals(shippingQuantity, "3");
+    }
+
+    @Test
+    public void test_EnterShippingQuantityOverLimit() {
+        home.clickItemFromList();
+        viewCart.enterShippingQuantity("2000");
+        boolean shpQtyErrMsg = viewCart.shippingQtyErrorMsg().isDisplayed();
+
+        Assert.assertTrue(shpQtyErrMsg);
+    }
 
 }
