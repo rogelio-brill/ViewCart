@@ -17,7 +17,9 @@ public class AddToCart {
     By cartList = By.className("cart-bucket__vendor-list");
 
     public List<WebElement> cartItemList() {
-        return driver.findElements(cartList);
+        WebElement cartListSection = driver.findElement(cartList);
+
+        return cartListSection.findElements(By.tagName("li"));
     }
 
 }

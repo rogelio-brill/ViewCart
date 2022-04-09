@@ -32,6 +32,12 @@ public class Utils {
     // Locator for first searched item
     By searchedItem = By.xpath("//*[@id=\"srp-river-results\"]/ul/li[1]/div/div[2]/a");
 
+    // Locator for verify yourself button
+    By verifyYourself = By.id("checkbox");
+
+    // Locator for captcha
+    By captcha = By.id("s0-70-captcha-ui");
+
     // Universal Functionalities
     public String getTitle() {
         return driver.getTitle();
@@ -59,6 +65,13 @@ public class Utils {
 
     public void clickSearchedItem() {
         driver.findElement(searchedItem).click();
+    }
+
+    public void clickVerifyYourself() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(captcha));
+        driver.switchTo().frame(0);
+        driver.findElement(verifyYourself).click();
     }
 
 }

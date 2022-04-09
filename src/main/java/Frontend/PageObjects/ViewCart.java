@@ -48,12 +48,12 @@ public class ViewCart {
     By itemMainPicture = By.id("icImg");
 
     // Locator for other item Picture
-    By itemOtherPictures = By.className("v-pic-item");
+    By itemOtherPictures = By.id("vertical-align-items-viewport");
 
     // Locator for item quantity text box
     By itemQuantity = By.id("qtyTextBox");
     //Locator for quantity error message
-    By quantityErrMsg = By.id("w1-15-_errMsg");
+    By quantityErrMsg = By.id("qtyErrMsg");
 
     // Locator for item seller information
     By itemSellerInfo = By.cssSelector(".vim.x-about-this-seller");
@@ -67,11 +67,17 @@ public class ViewCart {
     // Locator for protection plan decline
     By protectionPlanDecline = By.xpath("//*[text()='No thanks']");
 
+    // Locator for guest option
+    By guestOption = By.id("streamline-bin-layer");
+
     // Locator for Continue as guest button
     By guestButton = By.id("sbin-gxo-btn");
 
     // Locator for Add to cart button
-    By addToCartButton = By.id("atcRedesignId_btn");
+    By addToCartButton = By.id("isCartBtn_btn");
+
+    // Locator for Add to cart options
+    By addToCartOptions = By.id("atcRedesignId_overlay-atc-container");
 
     // Locator for view cart button
     By viewCartButton = By.cssSelector(".btn.btn-scnd.vi-VR-btnWdth-XL");
@@ -154,7 +160,9 @@ public class ViewCart {
     }
 
     public List<WebElement> otherPictures() {
-        return driver.findElements(itemOtherPictures);
+        WebElement otherPicturesSection = driver.findElement(itemOtherPictures);
+
+        return otherPicturesSection.findElements(By.tagName("li"));
     }
 
     public void enterItemQuantity(String amount) {
@@ -176,6 +184,15 @@ public class ViewCart {
         driver.findElement(buyNowButton).click();
     }
 
+    public boolean guestOptionIsPresent() {
+        try {
+            driver.findElement(guestOption);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
     public void clickGuest() {
         driver.findElement(guestButton).click();
     }
@@ -183,6 +200,15 @@ public class ViewCart {
     public void clickAddToCart() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartButton)).click();
+    }
+
+    public boolean addToCartOptionsIsPresent() {
+        try {
+            driver.findElement(addToCartOptions);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
     }
 
     public void clickViewCart() {
@@ -220,9 +246,23 @@ public class ViewCart {
         return footerLinksSection.findElements(By.tagName("li"));
     }
 
+    public boolean isSelectPresent() {
+        try {
+            driver.findElement(selectOptions);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
     public void selectDefault() {
         Select options = new Select(driver.findElement(selectOptions));
         options.selectByIndex(0);
+    }
+
+    public void selectOption(int index) {
+        Select options = new Select(driver.findElement(selectOptions));
+        options.selectByIndex(index);
     }
 
     public WebElement selectErrorMsg() {
@@ -241,6 +281,19 @@ public class ViewCart {
 
     public WebElement shippingQtyErrorMsg() {
         return driver.findElement(shippingQtyErrMsg);
+    }
+
+    public boolean isProtectionPresent() {
+        try {
+            driver.findElement(protectionPlan);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public void declineProtectionPlan() {
+        driver.findElement(protectionPlanDecline).click();
     }
 
 }
