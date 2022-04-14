@@ -62,10 +62,12 @@ public class ViewCartUi extends BaseDriver {
     public void test_VerifyItemPictures() {
         home.clickItemFromList();
         boolean mainPic = viewCart.mainPicture().isDisplayed();
-        List<WebElement> otherPics = viewCart.otherPictures();
-
         Assert.assertTrue(mainPic);
-        Assert.assertTrue(otherPics.size() >= 1);
+
+        if(viewCart.otherPicturesArePresent() || viewCart.otherPicturesArePresent2()) {
+            List<WebElement> otherPics = viewCart.otherPictures();
+            Assert.assertTrue(otherPics.size() >= 1);
+        }
     }
 
     @Test
@@ -188,10 +190,9 @@ public class ViewCartUi extends BaseDriver {
         viewCart.itemName().isDisplayed();
         utils.clickEbayLogo();
 
-        String expectedTitle = "Electronics, Cars, Fashion, Collectibles & More | eBay";
-        String actualTitle = utils.getTitle();
+        boolean verifiedHome = home.slideListIsPresent();
 
-        Assert.assertEquals(actualTitle, expectedTitle);
+        Assert.assertTrue(verifiedHome);
     }
 
     @Test
@@ -210,7 +211,7 @@ public class ViewCartUi extends BaseDriver {
         if(viewCart.isSelectPresent()) {
             viewCart.selectOption(1);
         }
-        viewCart.enterItemQuantity("2000");
+        viewCart.enterItemQuantity("2000000");
         boolean quantityErrMsg = viewCart.quantityErrorMsg().isDisplayed();
 
         Assert.assertTrue(quantityErrMsg);
@@ -267,7 +268,7 @@ public class ViewCartUi extends BaseDriver {
     @Test
     public void test_EnterShippingQuantityOverLimit() {
         home.clickItemFromList();
-        viewCart.enterShippingQuantity("2000");
+        viewCart.enterShippingQuantity("2000000");
         boolean shpQtyErrMsg = viewCart.shippingQtyErrorMsg().isDisplayed();
 
         Assert.assertTrue(shpQtyErrMsg);

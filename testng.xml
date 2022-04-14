@@ -3,15 +3,29 @@
 
 <suite name="Suite">
 
-<!--    <test thread-count="5" name="Test_ViewItem_UI">-->
-<!--        <parameter name="site" value="us"></parameter>-->
-<!--        <classes>-->
-<!--            <class name="Frontend.ViewCartUi" />-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test thread-count="5" name="Test_ViewItem_US">
+        <parameter name="site" value="us"></parameter>
+        <classes>
+            <class name="Frontend.ViewCartUi" />
+        </classes>
+    </test>
 
-    <test thread-count="5" name="Test_ViewItem_UI">
+    <test thread-count="5" name="Test_ViewItem_UK">
+        <parameter name="site" value="uk"></parameter>
+        <classes>
+            <class name="Frontend.ViewCartUi" />
+        </classes>
+    </test>
+
+    <test thread-count="5" name="Test_ViewItem_DE">
         <parameter name="site" value="de"></parameter>
+        <classes>
+            <class name="Frontend.ViewCartUi" />
+        </classes>
+    </test>
+
+    <test thread-count="5" name="Test_ViewItem_AU">
+        <parameter name="site" value="au"></parameter>
         <classes>
             <class name="Frontend.ViewCartUi" />
         </classes>

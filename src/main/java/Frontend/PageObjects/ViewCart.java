@@ -49,6 +49,7 @@ public class ViewCart {
 
     // Locator for other item Picture
     By itemOtherPictures = By.id("vertical-align-items-viewport");
+    By itemOtherPictures2 = By.cssSelector(".lst.icon");
 
     // Locator for item quantity text box
     By itemQuantity = By.id("qtyTextBox");
@@ -75,6 +76,7 @@ public class ViewCart {
 
     // Locator for Add to cart button
     By addToCartButton = By.id("isCartBtn_btn");
+    By addToCartButton2 = By.id("atcRedesignId_btn");
 
     // Locator for Add to cart options
     By addToCartOptions = By.id("atcRedesignId_overlay-atc-container");
@@ -159,8 +161,32 @@ public class ViewCart {
         return driver.findElement(itemMainPicture);
     }
 
+    public boolean otherPicturesArePresent() {
+        try {
+            driver.findElement(itemOtherPictures);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public boolean otherPicturesArePresent2() {
+        try {
+            driver.findElement(itemOtherPictures2);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
     public List<WebElement> otherPictures() {
-        WebElement otherPicturesSection = driver.findElement(itemOtherPictures);
+
+        WebElement otherPicturesSection;
+        if(otherPicturesArePresent()) {
+            otherPicturesSection = driver.findElement(itemOtherPictures);
+        }else {
+            otherPicturesSection = driver.findElement(itemOtherPictures2);
+        }
 
         return otherPicturesSection.findElements(By.tagName("li"));
     }
@@ -197,9 +223,21 @@ public class ViewCart {
         driver.findElement(guestButton).click();
     }
 
+    public boolean addToCartIsPresent() {
+        try {
+            driver.findElement(addToCartButton);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
     public void clickAddToCart() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartButton)).click();
+       if(addToCartIsPresent()) {
+           driver.findElement(addToCartButton).click();
+       }else {
+           driver.findElement(addToCartButton2).click();
+       }
     }
 
     public boolean addToCartOptionsIsPresent() {

@@ -16,10 +16,38 @@ public class Home {
 
     // Item Locator
     By listItem = By.id("s0-0-32-4-0-0[5]-4-match-media-0-ebay-carousel-container");
+    By listItem2 = By.id("s0-0-32-4-0-0[4]-4-match-media-0-ebay-carousel-list");
+
+    // Slide List locator
+    By slideList = By.id("s0-0-32-4-0-0[0]-2-match-media-0-ebay-carousel-list");
+
+    private boolean listIsPresent() {
+        try {
+            driver.findElement(listItem);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public boolean slideListIsPresent() {
+        try {
+            driver.findElement(slideList);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
 
     public void clickItemFromList() {
 
-        WebElement homeItemSection = driver.findElement(listItem);
+        WebElement homeItemSection;
+
+        if (listIsPresent()) {
+            homeItemSection = driver.findElement(listItem);
+        } else {
+            homeItemSection = driver.findElement(listItem2);
+        }
 
         List<WebElement> homeItems =  homeItemSection.findElements(By.tagName("li"));
 
