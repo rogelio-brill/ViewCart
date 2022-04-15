@@ -99,6 +99,8 @@
                             <suiteXmlFile>
                                 testng.xml</suiteXmlFile>
                         </suiteXmlFiles>
+                        <parallel>methods</parallel>
+                        <threadCount>5</threadCount>
                     </configuration>
                 </plugin>
                 <plugin>

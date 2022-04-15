@@ -3,35 +3,35 @@
 
 <suite name="Suite">
 
-    <test thread-count="5" name="Test_ViewItem_US">
+    <test parallel="methods" thread-count="5" name="Test_ViewItem_US">
         <parameter name="site" value="us"></parameter>
         <classes>
             <class name="Frontend.ViewCartUi" />
         </classes>
     </test>
 
-    <test thread-count="5" name="Test_ViewItem_UK">
+    <test parallel="methods" thread-count="5" name="Test_ViewItem_UK">
         <parameter name="site" value="uk"></parameter>
         <classes>
             <class name="Frontend.ViewCartUi" />
         </classes>
     </test>
 
-    <test thread-count="5" name="Test_ViewItem_DE">
+    <test parallel="methods" thread-count="5" name="Test_ViewItem_DE">
         <parameter name="site" value="de"></parameter>
         <classes>
             <class name="Frontend.ViewCartUi" />
         </classes>
     </test>
 
-    <test thread-count="5" name="Test_ViewItem_AU">
+    <test parallel="methods" thread-count="5" name="Test_ViewItem_AU">
         <parameter name="site" value="au"></parameter>
         <classes>
             <class name="Frontend.ViewCartUi" />
         </classes>
     </test>
 
-    <test parallel="tests" thread-count="5" name="Test_ViewItem_API">
+    <test parallel="methods" thread-count="5" name="Test_ViewItem_API">
         <classes>
             <class name="Backend.ViewCartApi" />
         </classes>
