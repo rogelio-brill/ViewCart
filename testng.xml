@@ -3,6 +3,10 @@
 
 <suite name="Suite">
 
+    <listeners>
+        <listener class-name="Frontend.RetryListenerClass"/>
+    </listeners>
+
     <test parallel="methods" thread-count="5" name="Test_ViewItem_US">
         <parameter name="site" value="us"></parameter>
         <classes>
