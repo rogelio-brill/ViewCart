@@ -116,6 +116,7 @@ public class ViewCart {
 
     // Locator for shipping quantity error msg
     By shippingQtyErrMsg = By.id("shQuantity-errTxt");
+    By shippingQtyErrDiv = By.className("ux-shipping-calculator__error");
 
 
     // ---------------------------------------------------------------
@@ -317,8 +318,21 @@ public class ViewCart {
         return driver.findElement(shippingQuantity).getAttribute("value");
     }
 
+    public boolean shippingQtyErrorMsgIsPresent() {
+        try {
+            driver.findElement(shippingQtyErrMsg);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
     public WebElement shippingQtyErrorMsg() {
-        return driver.findElement(shippingQtyErrMsg);
+        if(shippingQtyErrorMsgIsPresent()) {
+            return driver.findElement(shippingQtyErrMsg);
+        }else {
+            return driver.findElement(shippingQtyErrDiv);
+        }
     }
 
     public boolean isProtectionPresent() {

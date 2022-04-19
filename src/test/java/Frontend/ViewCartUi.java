@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ViewCartUi extends BaseDriver {
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_ViewItemPage(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -28,7 +28,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(itemNameDisplayed);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_VerifyItemDetails(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -51,7 +51,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(itemShipping);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_VerifyItemPictures(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -70,7 +70,7 @@ public class ViewCartUi extends BaseDriver {
         }
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_VerifySellerInfo(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -85,7 +85,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(sellerInfo);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_ShopWithConfidenceSection(@Optional String site) throws IOException{
         WebDriver driver = BaseDriver.getDriver(site);
@@ -100,7 +100,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(confidenceSection);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_EditQuantity(@Optional String site) throws IOException { // implement data provider
         WebDriver driver = BaseDriver.getDriver(site);
@@ -119,7 +119,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertEquals(itemQuantity, "4");
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_VerifyNumbersSoldAndWatchers(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -134,7 +134,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(numberSoldAndWatchers.size() >= 2);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_BuyItNow(@Optional String site) throws IOException { // Close protection plan frame
         WebDriver driver = BaseDriver.getDriver(site);
@@ -169,7 +169,7 @@ public class ViewCartUi extends BaseDriver {
         }
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_AddToCart(@Optional String site) throws IOException { // Cannot find element sometimes because of different id's
         WebDriver driver = BaseDriver.getDriver(site);
@@ -194,7 +194,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(cartItems.size() >= 1);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_AddToWatchlist(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -217,7 +217,7 @@ public class ViewCartUi extends BaseDriver {
         }
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_VerifySimilarItems(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -232,7 +232,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(similarItems.size() >= 1);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_VerifySellerItems(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -247,7 +247,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(sellerItems.size() >= 1);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_VerifyFooterLinks(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -262,7 +262,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(footerLinks.size() >= 9);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_EbayLogo(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -281,7 +281,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(verifiedHome);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_SearchItem(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -298,7 +298,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(searchWorks);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_EnterQuantityOverLimit(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -317,7 +317,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(quantityErrMsg);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_AddToCartWithoutSelectOption(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -337,7 +337,7 @@ public class ViewCartUi extends BaseDriver {
         }
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_BuyNowWithoutSelectOption(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -357,7 +357,7 @@ public class ViewCartUi extends BaseDriver {
         }
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_WatchlistWithoutSelectOption(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -377,7 +377,7 @@ public class ViewCartUi extends BaseDriver {
         }
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_EnterShippingQuantity(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
@@ -393,7 +393,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertEquals(shippingQuantity, "3");
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryFailedTestCases.class)
     @Parameters( {"site"} )
     public void test_EnterShippingQuantityOverLimit(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
