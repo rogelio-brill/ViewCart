@@ -3,9 +3,9 @@
 
 <suite name="Suite">
 
-<!--    <listeners>-->
-<!--        <listener class-name="Frontend.RetryListenerClass"/>-->
-<!--    </listeners>-->
+    <listeners>
+        <listener class-name="Frontend.RetryListenerClass"/>
+    </listeners>
 
     <test parallel="methods" thread-count="5" name="Test_ViewItem_US">
         <parameter name="site" value="us"></parameter>
@@ -14,26 +14,26 @@
         </classes>
     </test>
 
-<!--    <test parallel="methods" thread-count="5" name="Test_ViewItem_UK">-->
-<!--        <parameter name="site" value="uk"></parameter>-->
-<!--        <classes>-->
-<!--            <class name="Frontend.ViewCartUi" />-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test parallel="methods" thread-count="5" name="Test_ViewItem_UK">
+        <parameter name="site" value="uk"></parameter>
+        <classes>
+            <class name="Frontend.ViewCartUi" />
+        </classes>
+    </test>
 
-<!--    <test parallel="methods" thread-count="5" name="Test_ViewItem_DE">-->
-<!--        <parameter name="site" value="de"></parameter>-->
-<!--        <classes>-->
-<!--            <class name="Frontend.ViewCartUi" />-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test parallel="methods" thread-count="5" name="Test_ViewItem_DE">
+        <parameter name="site" value="de"></parameter>
+        <classes>
+            <class name="Frontend.ViewCartUi" />
+        </classes>
+    </test>
 
-<!--    <test parallel="methods" thread-count="5" name="Test_ViewItem_AU">-->
-<!--        <parameter name="site" value="au"></parameter>-->
-<!--        <classes>-->
-<!--            <class name="Frontend.ViewCartUi" />-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test parallel="methods" thread-count="5" name="Test_ViewItem_AU">
+        <parameter name="site" value="au"></parameter>
+        <classes>
+            <class name="Frontend.ViewCartUi" />
+        </classes>
+    </test>
 
 <!--    <test parallel="methods" thread-count="5" name="Test_ViewItem_API">-->
 <!--        <classes>-->

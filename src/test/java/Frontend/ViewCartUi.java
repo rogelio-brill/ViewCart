@@ -9,6 +9,7 @@ import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ViewCartUi extends BaseDriver {
 
@@ -36,7 +37,12 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
+
         home.clickItemFromList();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         boolean itemName = viewCart.itemName().isDisplayed();
         boolean itemCondition = viewCart.itemCondition().isDisplayed();
@@ -108,11 +114,22 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         home.clickItemFromList();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
+        if(viewCart.isSelect2Present()) {
+            viewCart.selectOption2(1);
+        }
         if(viewCart.isSelectPresent()) {
             viewCart.selectOption(1);
         }
+
         viewCart.enterItemQuantity("4");
         String itemQuantity = viewCart.getQuantity();
 
@@ -146,9 +163,17 @@ public class ViewCartUi extends BaseDriver {
         Checkout checkout = new Checkout(driver);
 
         home.clickItemFromList();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
+        if(viewCart.isSelect2Present()) {
+            viewCart.selectOption2(1);
+        }
         if(viewCart.isSelectPresent()) {
             viewCart.selectOption(1);
         }
+
         viewCart.clickBuyNow();
         if(viewCart.isProtectionPresent()) {
             viewCart.declineProtectionPlan();
@@ -178,11 +203,20 @@ public class ViewCartUi extends BaseDriver {
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
         AddToCart addToCart = new AddToCart(driver);
+        Utils utils = new Utils(driver);
 
         home.clickItemFromList();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
+        if(viewCart.isSelect2Present()) {
+            viewCart.selectOption2(1);
+        }
         if(viewCart.isSelectPresent()) {
             viewCart.selectOption(1);
         }
+
         viewCart.clickAddToCart();
         if(viewCart.isProtectionPresent()) {
             viewCart.declineProtectionPlan();
@@ -205,9 +239,17 @@ public class ViewCartUi extends BaseDriver {
         Utils utils = new Utils(driver);
 
         home.clickItemFromList();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
+        if(viewCart.isSelect2Present()) {
+            viewCart.selectOption2(1);
+        }
         if(viewCart.isSelectPresent()) {
             viewCart.selectOption(1);
         }
+
         viewCart.clickWatchlist();
         if(utils.getTitle().equals("Security Measure")) {
             Assert.assertEquals(utils.getTitle(), "Security Measure");
@@ -306,11 +348,20 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
 
         home.clickItemFromList();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
+        if(viewCart.isSelect2Present()) {
+            viewCart.selectOption2(1);
+        }
         if(viewCart.isSelectPresent()) {
             viewCart.selectOption(1);
         }
+
         viewCart.enterItemQuantity("2000000");
         boolean quantityErrMsg = viewCart.quantityErrorMsg().isDisplayed();
 
@@ -325,8 +376,13 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
 
         home.clickItemFromList();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
         if(viewCart.isSelectPresent()) {
             viewCart.selectDefault();
 
@@ -345,8 +401,13 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
 
         home.clickItemFromList();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
         if(viewCart.isSelectPresent()) {
             viewCart.selectDefault();
 
@@ -365,8 +426,13 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
 
         home.clickItemFromList();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
         if(viewCart.isSelectPresent()) {
             viewCart.selectDefault();
 
@@ -385,8 +451,13 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
 
         home.clickItemFromList();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
         viewCart.enterShippingQuantity("3");
         String shippingQuantity = viewCart.getShippingQuantity();
 
@@ -401,8 +472,13 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
 
         home.clickItemFromList();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
         viewCart.enterShippingQuantity("2000000");
         boolean shpQtyErrMsg = viewCart.shippingQtyErrorMsg().isDisplayed();
 

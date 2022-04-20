@@ -38,13 +38,20 @@ public class Utils {
     // Locator for captcha
     By captcha = By.id("s0-70-captcha-ui");
 
+    // Locator for cookies pop up
+    By cookiesDiv = By.id("gdpr-banner");
+
+    // Locator for cookies accept button
+    By cookiesAcceptBtn = By.id("gdpr-banner-accept");
+
     // Universal Functionalities
     public String getTitle() {
         return driver.getTitle();
     }
 
     public void clickEbayLogo() {
-        driver.findElement(ebayLogo).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ebayLogo)).click();
     }
 
     public void searchItem(String item) {
@@ -52,7 +59,8 @@ public class Utils {
     }
 
     public void clickSearch() {
-        driver.findElement(searchButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(searchButton)).click();
     }
 
     public WebElement searchResultsSection() {
@@ -72,6 +80,22 @@ public class Utils {
         wait.until(ExpectedConditions.visibilityOfElementLocated(captcha));
         driver.switchTo().frame(0);
         driver.findElement(verifyYourself).click();
+    }
+
+    public boolean cookiesDivIsPresent() {
+        try {
+            driver.findElement(cookiesDiv);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public void acceptCookies() {
+        if(cookiesDivIsPresent()) {
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(cookiesAcceptBtn)).click();
+        }
     }
 
 }

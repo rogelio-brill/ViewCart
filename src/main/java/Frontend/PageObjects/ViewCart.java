@@ -107,6 +107,7 @@ public class ViewCart {
 
     // Locator for Select Options
     By selectOptions = By.id("msku-sel-1");
+    By selectOptions2 = By.id("msku-sel-2");
 
     //Locator for Select options error message
     By selectErrMsg = By.id("msku-sel-1-errMsg");
@@ -208,7 +209,8 @@ public class ViewCart {
     }
 
     public void clickBuyNow() {
-        driver.findElement(buyNowButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(buyNowButton)).click();
     }
 
     public boolean guestOptionIsPresent() {
@@ -221,7 +223,8 @@ public class ViewCart {
     }
 
     public void clickGuest() {
-        driver.findElement(guestButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(guestButton)).click();
     }
 
     public boolean addToCartIsPresent() {
@@ -235,9 +238,11 @@ public class ViewCart {
 
     public void clickAddToCart() {
        if(addToCartIsPresent()) {
-           driver.findElement(addToCartButton).click();
+           WebDriverWait wait = new WebDriverWait(driver, 10);
+           wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartButton)).click();
        }else {
-           driver.findElement(addToCartButton2).click();
+           WebDriverWait wait = new WebDriverWait(driver, 10);
+           wait.until(ExpectedConditions.visibilityOfElementLocated(addToCartButton2)).click();
        }
     }
 
@@ -256,7 +261,8 @@ public class ViewCart {
     }
 
     public void clickWatchlist() {
-        driver.findElement(watchlistButton).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(watchlistButton)).click();
     }
 
     public WebElement confidenceSection() {
@@ -294,6 +300,15 @@ public class ViewCart {
         }
     }
 
+    public boolean isSelect2Present() {
+        try {
+            driver.findElement(selectOptions2);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
     public void selectDefault() {
         Select options = new Select(driver.findElement(selectOptions));
         options.selectByIndex(0);
@@ -301,6 +316,11 @@ public class ViewCart {
 
     public void selectOption(int index) {
         Select options = new Select(driver.findElement(selectOptions));
+        options.selectByIndex(index);
+    }
+
+    public void selectOption2(int index) {
+        Select options = new Select(driver.findElement(selectOptions2));
         options.selectByIndex(index);
     }
 
@@ -345,7 +365,8 @@ public class ViewCart {
     }
 
     public void declineProtectionPlan() {
-        driver.findElement(protectionPlanDecline).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(protectionPlanDecline)).click();
     }
 
 }
