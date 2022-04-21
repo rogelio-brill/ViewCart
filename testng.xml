@@ -35,10 +35,10 @@
         </classes>
     </test>
 
-<!--    <test parallel="methods" thread-count="5" name="Test_ViewItem_API">-->
-<!--        <classes>-->
-<!--            <class name="Backend.ViewCartApi" />-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test parallel="methods" thread-count="5" name="Test_ViewItem_API">
+        <classes>
+            <class name="Backend.ViewCartApi" />
+        </classes>
+    </test>
 
 </suite>

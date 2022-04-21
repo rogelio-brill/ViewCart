@@ -21,6 +21,10 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
 
@@ -38,6 +42,9 @@ public class ViewCartUi extends BaseDriver {
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
         Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
 
@@ -65,6 +72,10 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
         boolean mainPic = viewCart.mainPicture().isDisplayed();
@@ -84,6 +95,10 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
         boolean sellerInfo = viewCart.sellerInfo().isDisplayed();
@@ -99,6 +114,10 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
         boolean confidenceSection = viewCart.confidenceSection().isDisplayed();
@@ -106,9 +125,9 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(confidenceSection);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "quantity-data", dataProviderClass = TestData.class)
     @Parameters( {"site"} )
-    public void test_EditQuantity(@Optional String site) throws IOException { // implement data provider
+    public void test_EditQuantity(@Optional String site, String quantity) throws IOException { // implement data provider
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
 
@@ -117,6 +136,7 @@ public class ViewCartUi extends BaseDriver {
         Utils utils = new Utils(driver);
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
 
@@ -130,10 +150,10 @@ public class ViewCartUi extends BaseDriver {
             viewCart.selectOption(1);
         }
 
-        viewCart.enterItemQuantity("4");
+        viewCart.enterItemQuantity(quantity);
         String itemQuantity = viewCart.getQuantity();
 
-        Assert.assertEquals(itemQuantity, "4");
+        Assert.assertEquals(itemQuantity, quantity);
     }
 
     @Test(retryAnalyzer = RetryFailedTestCases.class)
@@ -144,6 +164,10 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
         List<WebElement> numberSoldAndWatchers = viewCart.soldSection();
@@ -161,6 +185,9 @@ public class ViewCartUi extends BaseDriver {
         ViewCart viewCart = new ViewCart(driver);
         Utils utils = new Utils(driver);
         Checkout checkout = new Checkout(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
 
@@ -205,6 +232,9 @@ public class ViewCartUi extends BaseDriver {
         AddToCart addToCart = new AddToCart(driver);
         Utils utils = new Utils(driver);
 
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
         home.clickItemFromList();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -238,6 +268,9 @@ public class ViewCartUi extends BaseDriver {
         ViewCart viewCart = new ViewCart(driver);
         Utils utils = new Utils(driver);
 
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
         home.clickItemFromList();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -267,6 +300,10 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
         List<WebElement> similarItems = viewCart.similarItemsList();
@@ -282,6 +319,10 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
         List<WebElement> sellerItems = viewCart.sellerItemsList();
@@ -297,6 +338,10 @@ public class ViewCartUi extends BaseDriver {
 
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
+        Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
         List<WebElement> footerLinks = viewCart.footerLinksList();
@@ -313,6 +358,9 @@ public class ViewCartUi extends BaseDriver {
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
         Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
         viewCart.itemName().isDisplayed();
@@ -332,6 +380,9 @@ public class ViewCartUi extends BaseDriver {
         Home home = new Home(driver);
         Utils utils = new Utils(driver);
 
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
         home.clickItemFromList();
         utils.searchItem("iphone");
         utils.clickSearch();
@@ -349,6 +400,9 @@ public class ViewCartUi extends BaseDriver {
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
         Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
 
@@ -378,6 +432,9 @@ public class ViewCartUi extends BaseDriver {
         ViewCart viewCart = new ViewCart(driver);
         Utils utils = new Utils(driver);
 
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
         home.clickItemFromList();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -402,6 +459,9 @@ public class ViewCartUi extends BaseDriver {
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
         Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
 
@@ -428,6 +488,9 @@ public class ViewCartUi extends BaseDriver {
         ViewCart viewCart = new ViewCart(driver);
         Utils utils = new Utils(driver);
 
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
         home.clickItemFromList();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -453,6 +516,9 @@ public class ViewCartUi extends BaseDriver {
         ViewCart viewCart = new ViewCart(driver);
         Utils utils = new Utils(driver);
 
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
+
         home.clickItemFromList();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -473,6 +539,9 @@ public class ViewCartUi extends BaseDriver {
         Home home = new Home(driver);
         ViewCart viewCart = new ViewCart(driver);
         Utils utils = new Utils(driver);
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        utils.acceptCookies();
 
         home.clickItemFromList();
 
