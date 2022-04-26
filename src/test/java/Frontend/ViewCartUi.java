@@ -13,8 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ViewCartUi extends BaseDriver {
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_ViewItemPage(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -33,8 +32,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(itemNameDisplayed);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_VerifyItemDetails(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -64,8 +62,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(itemShipping);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_VerifyItemPictures(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -87,8 +84,7 @@ public class ViewCartUi extends BaseDriver {
         }
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_VerifySellerInfo(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -106,8 +102,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(sellerInfo);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_ShopWithConfidenceSection(@Optional String site) throws IOException{
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -126,7 +121,6 @@ public class ViewCartUi extends BaseDriver {
     }
 
     @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "quantity-data", dataProviderClass = TestData.class)
-    @Parameters( {"site"} )
     public void test_EditQuantity(@Optional String site, String quantity) throws IOException { // implement data provider
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -156,8 +150,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertEquals(itemQuantity, quantity);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_VerifyNumbersSoldAndWatchers(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -175,8 +168,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(numberSoldAndWatchers.size() >= 2);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_BuyItNow(@Optional String site) throws IOException { // Close protection plan frame
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -221,8 +213,7 @@ public class ViewCartUi extends BaseDriver {
         }
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_AddToCart(@Optional String site) throws IOException { // Cannot find element sometimes because of different id's
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -258,8 +249,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(cartItems.size() >= 1);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_AddToWatchlist(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -292,8 +282,7 @@ public class ViewCartUi extends BaseDriver {
         }
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_VerifySimilarItems(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -311,8 +300,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(similarItems.size() >= 1);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_VerifySellerItems(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -330,8 +318,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(sellerItems.size() >= 1);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_VerifyFooterLinks(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -349,8 +336,7 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(footerLinks.size() >= 9);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_EbayLogo(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -371,9 +357,8 @@ public class ViewCartUi extends BaseDriver {
         Assert.assertTrue(verifiedHome);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
-    public void test_SearchItem(@Optional String site) throws IOException {
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "search-item-data", dataProviderClass = TestData.class)
+    public void test_SearchItem(@Optional String site, String item) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
 
@@ -384,16 +369,15 @@ public class ViewCartUi extends BaseDriver {
         utils.acceptCookies();
 
         home.clickItemFromList();
-        utils.searchItem("iphone");
+        utils.searchItem(item);
         utils.clickSearch();
         boolean searchWorks = utils.searchResultsSection().isDisplayed();
 
         Assert.assertTrue(searchWorks);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
-    public void test_EnterQuantityOverLimit(@Optional String site) throws IOException {
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "over-quantity-data", dataProviderClass = TestData.class)
+    public void test_EnterQuantityOverLimit(@Optional String site, String quantity) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
 
@@ -416,14 +400,13 @@ public class ViewCartUi extends BaseDriver {
             viewCart.selectOption(1);
         }
 
-        viewCart.enterItemQuantity("2000000");
+        viewCart.enterItemQuantity(quantity);
         boolean quantityErrMsg = viewCart.quantityErrorMsg().isDisplayed();
 
         Assert.assertTrue(quantityErrMsg);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_AddToCartWithoutSelectOption(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -450,8 +433,7 @@ public class ViewCartUi extends BaseDriver {
         }
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_BuyNowWithoutSelectOption(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -478,8 +460,7 @@ public class ViewCartUi extends BaseDriver {
         }
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "localization-data", dataProviderClass = TestData.class)
     public void test_WatchlistWithoutSelectOption(@Optional String site) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
@@ -506,9 +487,8 @@ public class ViewCartUi extends BaseDriver {
         }
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
-    public void test_EnterShippingQuantity(@Optional String site) throws IOException {
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "quantity-data", dataProviderClass = TestData.class)
+    public void test_EnterShippingQuantity(@Optional String site, String quantity) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
 
@@ -524,15 +504,14 @@ public class ViewCartUi extends BaseDriver {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         utils.acceptCookies();
 
-        viewCart.enterShippingQuantity("3");
+        viewCart.enterShippingQuantity(quantity);
         String shippingQuantity = viewCart.getShippingQuantity();
 
-        Assert.assertEquals(shippingQuantity, "3");
+        Assert.assertEquals(shippingQuantity, quantity);
     }
 
-    @Test(retryAnalyzer = RetryFailedTestCases.class)
-    @Parameters( {"site"} )
-    public void test_EnterShippingQuantityOverLimit(@Optional String site) throws IOException {
+    @Test(retryAnalyzer = RetryFailedTestCases.class, dataProvider = "over-quantity-data", dataProviderClass = TestData.class)
+    public void test_EnterShippingQuantityOverLimit(@Optional String site, String quantity) throws IOException {
         WebDriver driver = BaseDriver.getDriver(site);
         driver.manage().window().maximize();
 
@@ -548,7 +527,7 @@ public class ViewCartUi extends BaseDriver {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         utils.acceptCookies();
 
-        viewCart.enterShippingQuantity("2000000");
+        viewCart.enterShippingQuantity(quantity);
         boolean shpQtyErrMsg = viewCart.shippingQtyErrorMsg().isDisplayed();
 
         Assert.assertTrue(shpQtyErrMsg);
