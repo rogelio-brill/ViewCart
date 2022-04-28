@@ -92,7 +92,7 @@
                         <systemPropertyVariables>
                             <testbrowser>chrome
                             </testbrowser>
-                            <testsite>US
+                            <testsite>us
                             </testsite>
                         </systemPropertyVariables>
                         <suiteXmlFiles>

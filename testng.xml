@@ -1,19 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="Suite">
+<suite name="ViewItem_Suite">
 
-<!--    <listeners>-->
-<!--        <listener class-name="Frontend.RetryListenerClass"/>-->
-<!--    </listeners>-->
+    <listeners>
+        <listener class-name="Frontend.RetryListenerClass"/>
+    </listeners>
 
-    <test parallel="methods" thread-count="5" name="Test_ViewItem_US">
+    <test parallel="methods" thread-count="5" name="ViewItem_Unit_Tests">
+        <groups>
+            <run>
+                <include name="unit"/>
+            </run>
+        </groups>
         <classes>
-            <class name="Frontend.ViewCartUi" />
+            <class name="Frontend.ViewCartUi"/>
         </classes>
     </test>
 
-    <test parallel="methods" thread-count="5" name="Test_ViewItem_API">
+    <test parallel="methods" thread-count="5" name="ViewItem_Component_Tests">
+        <groups>
+            <run>
+                <include name="component"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="Frontend.ViewCartUi"/>
+        </classes>
+    </test>
+
+    <test parallel="methods" thread-count="5" name="ViewItem_Integration_Tests">
+        <groups>
+            <run>
+                <include name="integration"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="Frontend.ViewCartUi"/>
+        </classes>
+    </test>
+
+    <test parallel="methods" thread-count="5" name="ViewItem_Negative_Tests">
+        <groups>
+            <run>
+                <include name="negative"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="Frontend.ViewCartUi"/>
+        </classes>
+    </test>
+
+    <test parallel="methods" thread-count="5" name="ViewItem_API_Tests">
         <classes>
             <class name="Backend.ViewCartApi" />
         </classes>
